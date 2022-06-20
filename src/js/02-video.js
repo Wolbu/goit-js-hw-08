@@ -1,4 +1,4 @@
-SECONDS_KEY = 'videoplayer-current-time';
+const SECONDS_KEY = 'videoplayer-current-time';
 
 import throttle from 'lodash.throttle';
 import Player from '@vimeo/player';
@@ -13,7 +13,6 @@ player.on('timeupdate', throttle(rememberSecconds, 1000));
 function rememberSecconds(data) {
   const time = data.seconds;
   localStorage.setItem(SECONDS_KEY, data.seconds);
-  console.log(time);
 }
 
 function onPageLoading() {
