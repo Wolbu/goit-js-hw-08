@@ -6,7 +6,12 @@ import Player from '@vimeo/player';
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-onPageLoading();
+// onPageLoading();
+
+const savedTime = localStorage.getItem(SECONDS_KEY);
+if (savedTime) {
+  player.setCurrentTime(savedTime);
+}
 
 player.on('timeupdate', throttle(rememberSecconds, 1000));
 
@@ -15,9 +20,9 @@ function rememberSecconds(data) {
   localStorage.setItem(SECONDS_KEY, data.seconds);
 }
 
-function onPageLoading() {
-  const savedTime = localStorage.getItem(SECONDS_KEY);
-  if (savedTime) {
-    player.setCurrentTime(savedTime);
-  }
-}
+// function onPageLoading() {
+//   const savedTime = localStorage.getItem(SECONDS_KEY);
+//   if (savedTime) {
+//     player.setCurrentTime(savedTime);
+//   }
+// }
