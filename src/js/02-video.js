@@ -13,6 +13,7 @@ player.on('timeupdate', throttle(rememberSecconds, 1000));
 function rememberSecconds(data) {
   const time = data.seconds;
   localStorage.setItem(SECONDS_KEY, data.seconds);
+  console.log(time);
 }
 
 function onPageLoading() {
